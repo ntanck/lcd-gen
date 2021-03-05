@@ -1,19 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <lcd v-bind:pixels="pixel_data" @pixel-click="onPixelClick" />
+    <control v-bind:pixels="pixel_data" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import lcd from "./components/lcd.vue";
+import Vue from "vue";
+import control from "./components/control.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    lcd,
+    control,
+  },
+  data: () => ({
+    pixel_data: [
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+    ],
+  }),
+  methods: {
+    onPixelClick(coords) {
+      let enabled = this.pixel_data[coords["y"]];
+      enabled[coords["x"]] = !enabled[coords["x"]];
+      Vue.set(this.pixel_data, coords["y"], enabled);
+    },
+  },
+};
 </script>
 
 <style>
@@ -21,8 +42,9 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  margin: auto;
   color: #2c3e50;
-  margin-top: 60px;
+  width: 70%;
+  display: flex;
 }
 </style>
