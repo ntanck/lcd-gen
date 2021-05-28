@@ -1,6 +1,7 @@
 <template>
   <div class="control">
     <div class="checkboxes">
+      <p class="row">Orientation</p>
       <div class="row">
         <div class="checkbox">
           <input
@@ -10,20 +11,23 @@
             name="orientation"
             v-model="charOrient"
             value="h"
+            @change="update_converted"
           />
           <label for="horizontal">Horizontal</label>
         </div>
-        <div class="checkbox">
+        <div class="checkbox small">
           <input
             type="radio"
             id="vertical"
             name="orientation"
             v-model="charOrient"
             value="v"
+            @change="update_converted"
           />
           <label for="vertical">Vertical</label>
         </div>
       </div>
+      <p class="row">Output</p>
       <div class="row">
         <div class="checkbox">
           <input
@@ -37,7 +41,7 @@
           />
           <label for="hexadecimal">Hexadecimal</label>
         </div>
-        <div class="checkbox">
+        <div class="checkbox small">
           <input
             type="radio"
             id="hex"
@@ -104,14 +108,14 @@ export default {
 
 <style scoped>
 .control {
-  width: 38vw;
   margin-left: 2vw;
+  color:white;
 }
 
 .checkboxes {
   display: flex;
   margin-bottom: 0.5vw;
-  height: 8vw;
+  height: 9vw;
   font-size: 2vw;
   flex-direction: column;
 }
@@ -119,17 +123,37 @@ export default {
 .row {
   display: flex;
   flex-direction: row;
-  width: 40vw;
+  width: 25vw;
+}
+
+div.row:nth-of-type(1) {
+  margin-bottom: 0.4em;
+}
+
+div.row {
+  margin-top: 0.2em;
+}
+
+p {
+  font-size: .5em;
+  margin: 0;
+  border-bottom: 1px solid;
 }
 
 .checkbox {
-  width: 40vw;
   flex-direction: column;
+  width: 17vw;
+}
+
+.small {
+  width: 10vw;
 }
 
 .textbox {
-  border-width: 1px;
-  width: 100%;
-  height: calc(29.5vw - 2px);
+  border-width: 0;
+  width: 25vw;
+  height: calc(15vw + 5px);
+  resize: none;
+  padding: 0; 
 }
 </style>

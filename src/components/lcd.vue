@@ -36,11 +36,14 @@ export default {
 
 <style scoped>
 .display {
-  width: 60vw;
+  padding:0.5vw;
+  width: calc(30vw-5px);
+  height: calc(24vw+5px);
+  background-color: #03045e;
 }
 
 .row {
-  height: 5vw;
+  height: 3vw;
 }
 
 .row:not(:last-child) {

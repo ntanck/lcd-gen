@@ -29,9 +29,12 @@ export default {
 <style scoped>
 .pixel {
   display: inline-block;
-  height: 5vw;
-  width: 5vw;
-  background-color: #77b300;
+  height: 3vw;
+  width: 3vw;
+  background-color: #03045e;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
 }
 
 .pixel:not(:first-child) {
@@ -39,6 +42,6 @@ export default {
 }
 
 .on {
-    background-color: #111a00;
+    background-color: #f0f0f0;
 }
 </style>
