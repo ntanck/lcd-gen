@@ -43,6 +43,7 @@ export default {
 }
 
 .row {
+  padding: 0;
   height: 3vw;
 }
 
