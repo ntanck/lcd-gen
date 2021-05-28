@@ -37,8 +37,6 @@ export default {
 <style scoped>
 .display {
   padding:0.5vw;
-  width: calc(30vw-5px);
-  height: calc(24vw+5px);
   background-color: #03045e;
 }
 
