@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: '/lcd-gen/',
+  publicPath: '/',
   chainWebpack: config => {
     config
       .plugin('html')
