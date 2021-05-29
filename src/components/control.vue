@@ -55,6 +55,7 @@
       </div>
     </div>
     <textarea class="textbox" v-model="converted" />
+    <button v-on:click="$emit('clear')">Reset</button>
   </div>
 </template>
 
@@ -70,17 +71,17 @@ export default {
     pixels: Array,
   },
   watch: {
-    pixels: function () {this.update_converted()},
+    pixels: function () {
+      this.update_converted();
+    },
   },
   methods: {
     update_converted() {
       let char_sets = [];
       if (this.charOrient == "h") {
-        for (let i = 0; i < this.pixels.length; i++) {
+        for (let row of this.pixels) {
           let char_set = "";
-          for (let j = 0; j < this.pixels[0].length; j++) {
-            char_set += this.pixels[i][j] ? "1" : "0";
-          }
+          for (let pixel of row) char_set += pixel ? "1" : "0";
           char_sets.push(char_set);
         }
       } else {
@@ -109,7 +110,7 @@ export default {
 <style scoped>
 .control {
   margin-left: 2vw;
-  color:white;
+  color: white;
 }
 
 .checkboxes {
@@ -134,8 +135,17 @@ div.row {
   margin-top: 0.2em;
 }
 
+button {
+  padding: 0;
+  border: 0;
+  width: 5vw;
+  margin-top: 0.1vw;
+  height: 2vw;
+  display: block;
+}
+
 p {
-  font-size: .5em;
+  font-size: 0.5em;
   margin: 0;
   border-bottom: 1px solid;
 }
@@ -152,8 +162,8 @@ p {
 .textbox {
   border-width: 0;
   width: 25vw;
-  height: calc(15vw + 5px);
+  height: calc(13vw + 5px);
   resize: none;
-  padding: 0; 
+  padding: 0;
 }
 </style>

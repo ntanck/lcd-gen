@@ -3,7 +3,7 @@
     <h1>LCD Character Generator</h1>
     <div class="main">
       <lcd v-bind:pixels="pixel_data" @pixel-click="onPixelClick" />
-      <control v-bind:pixels="pixel_data" />
+      <control v-bind:pixels="pixel_data" @clear="clear" />
     </div>
   </div>
 </template>
@@ -35,6 +35,9 @@ export default {
       let enabled = this.pixel_data[coords.y];
       enabled[coords.x] = !enabled[coords.x];
       Vue.set(this.pixel_data, coords.y, enabled);
+    },
+    clear() {
+      this.pixel_data = Array.from(Array(7), () => new Array(5));
     },
   },
 };
